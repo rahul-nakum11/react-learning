@@ -1,13 +1,9 @@
 import React from "react";
+import RestaurentList from '../RestaurentList'
 export const Container = () =>  {
  return (
-    <>
-    <div>
-        <section>
-            <image alt={'restaurant-logo'}/>
-            <h3>Restaurant Name</h3>
-        </section>        
+    <div class="w-[100%] my-1">
+       <RestaurentList/>       
     </div>
-    </>
  )
 }

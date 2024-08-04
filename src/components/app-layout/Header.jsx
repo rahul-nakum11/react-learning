@@ -1,35 +1,20 @@
 import React from "react";
-import styled from "styled-components";
-
-const StyledHeader = styled.header`
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 20px 10px;
-    background: #f0f0f0;
-    color: #fff;
-    font-size:16px;
-    line-height:1.2;
-`
-const StyledLogo = styled.img`
-    width:120px;
-    height:80px;
-    border: 1px solid #f0f0f0f0;
-    border-radius:4px;
-`
-const StyledLink= styled.a`
- padding:20px;
-`
+import { LOGO_URL } from "../../utils/constant";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 
 export const Header = () =>  {
+      const onlineStatus = useOnlineStatus();
+
  return (
-    <StyledHeader>
-            <StyledLogo alt={'company-logo'} src="https://pics.craiyon.com/2023-10-20/8a24fcbb350f4127bfb938659f4b8b84.webp"/>
-            <nav>
-                <StyledLink href="/">Home</StyledLink> 
-                <StyledLink href="/about">About</StyledLink> 
-                <StyledLink href="/login">Login</StyledLink> 
+    <header class="flex p-4 justify-between items-center bg-white-300 shadow-lg">
+            <img class="w-20 lg:rounded" alt={'company-logo'} src={LOGO_URL}/>
+            <nav class="flex p-4 font-bold">
+                <Link to="/" class="px-4 mx-1 text-black-600">Home</Link> 
+                <Link to="/about" class="px-4 mx-1 text-black-600">About Us</Link>
+                <Link to="/contact-us" class="px-4 mx-1 text-black-600">Contact Us</Link> 
+                <a className="px-4">Online Status: {onlineStatus ? "✅" : "🔴"}</a>
             </nav>
-    </StyledHeader>
+    </header>
  )
 }
